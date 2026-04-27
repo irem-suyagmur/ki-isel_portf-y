@@ -1,4 +1,3 @@
-#kişisel_portföy
 **İremsu Yağmur Okul No: 24080410021**
 
 <div align="center">

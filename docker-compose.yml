@@ -1,0 +1,48 @@
+services:
+  # ── Main portfolio app ──────────────────────────────────────────
+  portfolio:
+    image: ghcr.io/iremyildiz/portfolyo:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: portfolio_app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=Europe/Istanbul
+    labels:
+      - "com.iremyildiz.service=portfolio"
+      - "com.iremyildiz.version=1.0.0"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - portfolio_net
+
+  # ── Optional: Mailhog for local email testing ───────────────────
+  mailer:
+    image: mailhog/mailhog:latest
+    container_name: portfolio_mailer
+    restart: unless-stopped
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Web UI
+    profiles:
+      - mailer
+    networks:
+      - portfolio_net
+
+networks:
+  portfolio_net:
+    driver: bridge
+    name: portfolio_net

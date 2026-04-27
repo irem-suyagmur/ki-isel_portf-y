@@ -1,0 +1,49 @@
+app = "portfolyo-iremyildiz"
+primary_region = "ams"     # Amsterdam — closest free region for Turkey
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  TZ = "Europe/Istanbul"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true           # Redirect HTTP → HTTPS
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 100
+    soft_limit = 75
+
+  [[services.http_checks]]
+    interval = "30s"
+    grace_period = "10s"
+    method = "get"
+    path = "/health"
+    protocol = "http"
+    timeout = "5s"
+    tls_skip_verify = false
+
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+# Custom domain (add after DNS is configured)
+# [[services.domains]]
+#   fqdn = "iremyildiz.dev"

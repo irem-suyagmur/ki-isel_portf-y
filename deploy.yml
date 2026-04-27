@@ -1,0 +1,58 @@
+name: Deploy — Fly.io Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'production'
+        type: choice
+        options: [production, staging]
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false   # Never cancel a running deploy
+
+jobs:
+  deploy:
+    name: Deploy to Fly.io
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly.io
+        run: flyctl deploy --remote-only --wait-timeout 120
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Health check after deploy
+        run: |
+          sleep 10
+          HTTP_STATUS=$(curl -sL -o /dev/null -w "%{http_code}" https://iremyildiz.fly.dev/health)
+          echo "Health endpoint returned: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "❌ Health check failed after deploy"
+            exit 1
+          fi
+          echo "✅ Deploy successful — site is healthy"
+
+      - name: Notify deployment
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "🚀 Deployment successful to https://iremyildiz.fly.dev"
+          else
+            echo "❌ Deployment failed"
+          fi

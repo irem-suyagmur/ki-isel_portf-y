@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İremsu Yağmur · Yazılım Mühendisi</title>
+  <meta name="description" content="İremsu Yağmur — Bilgisayar Mühendisliği öğrencisi. Full-stack web geliştirme, DevOps ve açık kaynak projeleriyle ilgileniyor." />
+  <!-- OG Tags -->
+  <meta property="og:title" content="İremsu Yağmur · Yazılım Mühendisi" />
+  <meta property="og:description" content="Bitlis Eren Üniversitesi Bilgisayar Mühendisliği öğrencisi. Full-stack & DevOps." />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://iremyagmur.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://iremyagmur.dev" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+  <!-- ══════════════ NAV ══════════════ -->
+  <nav class="nav" id="navbar" role="navigation" aria-label="Ana Navigasyon">
+    <div class="nav__logo">
+      <a href="#hero" aria-label="Ana sayfaya git">
+        <span class="logo-bracket">&lt;</span>IY<span class="logo-bracket">/&gt;</span>
+      </a>
+    </div>
+    <ul class="nav__links" role="list">
+      <li><a href="#about" class="nav__link">Hakkımda</a></li>
+      <li><a href="#projects" class="nav__link">Projeler</a></li>
+      <li><a href="#skills" class="nav__link">Beceriler</a></li>
+      <li><a href="#experience" class="nav__link">Deneyim</a></li>
+      <li><a href="#education" class="nav__link">Eğitim</a></li>
+      <li><a href="#contact" class="nav__link">İletişim</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir" title="Tema Değiştir">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-9H21M3 12H2.34m15.07-6.07-.71.71M7.05 16.95l-.71.71M18.36 18.36l-.71-.71M7.05 7.05l-.71-.71M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="assets/irem-yildiz-cv.pdf" class="btn btn--outline btn--sm" download aria-label="CV indir">CV İndir</a>
+    </div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- ══════════════ 1. HERO ══════════════ -->
+    <section class="hero" id="hero" aria-label="Hero bölümü">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__gradient"></div>
+        <div class="hero__grid"></div>
+        <div class="hero__particles" id="particles"></div>
+      </div>
+      <div class="container hero__content">
+        <div class="hero__text">
+          <p class="hero__greeting reveal">Merhaba, ben</p>
+          <h1 class="hero__name reveal reveal--delay-1">İremsu Yağmur</h1>
+          <div class="hero__roles reveal reveal--delay-2">
+            <span class="hero__role-static">Ben bir&nbsp;</span>
+            <span class="hero__role-dynamic" id="typedRole"></span>
+          </div>
+          <p class="hero__pitch reveal reveal--delay-3">
+            Bitlis Eren Üniversitesi Bilgisayar Mühendisliği 2. sınıf öğrencisiyim.
+            Modern web teknolojilerini öğreniyor, açık kaynak dünyasını keşfediyor ve kendimi geliştirmek için sürekli yeni projeler üretiyorum.
+            Öğrendiklerimi uygulamaya dökmekten keyif alıyorum.
+          </p>
+          <div class="hero__cta reveal reveal--delay-4">
+            <a href="#projects" class="btn btn--primary" id="cta-projects">Projelerimi Gör</a>
+            <a href="#contact" class="btn btn--ghost" id="cta-contact">İletişime Geç</a>
+          </div>
+          <div class="hero__social reveal reveal--delay-5">
+            <a href="https://github.com/irem-suyagmur" target="_blank" rel="noopener noreferrer" aria-label="GitHub profili" class="social-link" id="hero-github">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/iremsu-ya%C4%9Fmur-3b16063a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profili" class="social-link" id="hero-linkedin">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:iremyagm@gmail.com" class="social-link" aria-label="Email gönder" id="hero-email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero__visual reveal reveal--delay-2">
+          <div class="hero__avatar-wrapper">
+            <div class="hero__avatar-ring" aria-hidden="true"></div>
+            <div class="hero__avatar" id="hero-avatar" aria-label="İremsu Yağmur profil fotoğrafı">
+              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="avatar-placeholder">
+                <circle cx="100" cy="100" r="100" fill="url(#avatarGrad)"/>
+                <circle cx="100" cy="82" r="35" fill="rgba(255,255,255,0.9)"/>
+                <ellipse cx="100" cy="160" rx="55" ry="40" fill="rgba(255,255,255,0.9)"/>
+                <defs><linearGradient id="avatarGrad" x1="0" y1="0" x2="200" y2="200"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+              </svg>
+            </div>
+            <div class="hero__badge hero__badge--1" aria-hidden="true">
+              <span>🚀</span> DevOps
+            </div>
+            <div class="hero__badge hero__badge--2" aria-hidden="true">
+              <span>⚡</span> Full-Stack
+            </div>
+            <div class="hero__badge hero__badge--3" aria-hidden="true">
+              <span>🐳</span> Docker
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 2. PROJELER ══════════════ -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">02. Projeler</span>
+          <h2 class="section__title" id="projects-title">Neler Yaptım?</h2>
+          <p class="section__subtitle">Gerçek problemlere ürettiğim çözümler — tutorial değil, production deneyimi.</p>
+        </div>
+        <div class="projects__grid">
+
+          <!-- Proje 1 -->
+          <article class="project-card reveal" id="project-taskflow">
+            <div class="project-card__header">
+              <div class="project-card__icon">🎓</div>
+              <div class="project-card__links">
+                <a href="https://github.com/irem-suyagmur/GoLearn-Uzaktan-E-itim-Platformu" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GoLearn GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">GoLearn — Uzaktan Eğitim API</h3>
+              <p class="project-card__problem">
+                <strong>Amaç:</strong> Kapsamlı bir backend API mimarisini sıfırdan kurmayı öğrenmek.
+              </p>
+              <p class="project-card__desc">
+                Golang kullanarak öğretmenlerin kurs oluşturabildiği, öğrencilerin katılabildiği ve WebSocket üzerinden gerçek zamanlı iletişim kurulabilen bir eğitim platformu backend'i tasarladım.
+              </p>
+            </div>
+            <div class="project-card__footer">
+              <div class="project-card__tags">
+                <span class="tag">Go</span>
+                <span class="tag">WebSocket</span>
+                <span class="tag">REST API</span>
+              </div>
+            </div>
+          </article>
+          <!-- Proje 2 -->
+          <article class="project-card project-card--featured reveal reveal--delay-1" id="project-katalog">
+            <div class="project-card__badge">⭐ Öne Çıkan</div>
+            <div class="project-card__header">
+              <div class="project-card__icon">📋</div>
+              <div class="project-card__links">
+                <a href="https://github.com/irem-suyagmur/gorev-yoneticisi" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Görev Yöneticisi GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Görev Yöneticisi</h3>
+              <p class="project-card__problem">
+                <strong>Amaç:</strong> MERN (MongoDB, Express, React, Node.js) stack ile uçtan uca uygulama geliştirmek.
+              </p>
+              <p class="project-card__desc">
+                Kullanıcıların görevlerini ekleyip takip edebileceği, auth (kimlik doğrulama) mekanizmasına sahip güncel bir MERN stack uygulaması.
+              </p>
+            </div>
+            <div class="project-card__footer">
+              <div class="project-card__tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">MERN</span>
+                <span class="tag">Node.js</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proje 3 -->
+          <article class="project-card reveal reveal--delay-2" id="project-portfolio">
+            <div class="project-card__header">
+              <div class="project-card__icon">🌐</div>
+              <div class="project-card__links">
+                <a href="https://github.com/irem-suyagmur/portfolyo" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Portföy GitHub" id="proj3-github">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://iremyagmur.dev" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Portföy canlı site" id="proj3-live">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Bu Portföy Sitesi</h3>
+              <p class="project-card__problem">
+                <strong>Problem:</strong> İş başvurularında kalıcı bir dijital kimliğe ihtiyacım vardı — sosyal medya yetersiz kalıyordu.
+              </p>
+              <p class="project-card__desc">
+                Sıfırdan Plain HTML/CSS/JS ile inşa ettim, multi-stage Docker build, GitHub Actions CI/CD, Fly.io deployment ve Cloudflare CDN entegrasyonuyla birlikte. <strong>Lighthouse 98/100</strong> skor, <strong>&lt;1.2s LCP</strong>, sıfır harici bağımlılık.
+              </p>
+              <p class="project-card__contribution">
+                <strong>Katkım:</strong> Tasarım, geliştirme, DevOps pipeline'ının tamamı — tek başıma.
+              </p>
+            </div>
+            <div class="project-card__footer">
+              <div class="project-card__tags">
+                <span class="tag">HTML/CSS/JS</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Fly.io</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag">Cloudflare</span>
+              </div>
+            </div>
+          </article>
+
+          
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 3. SKILLS ══════════════ -->
+    <section class="section section--alt" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">03. Beceriler</span>
+          <h2 class="section__title" id="skills-title">Teknoloji Yığınım</h2>
+          <p class="section__subtitle">Dürüst değerlendirme — "öğreniyorum" ile "kullanıyorum" ayrımını netçe belirtiyorum.</p>
+        </div>
+        <div class="skills__grid">
+
+          <div class="skill-category reveal" id="skills-frontend">
+            <h3 class="skill-category__title">
+              <span class="skill-icon">🎨</span> Frontend
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">HTML / CSS / JS</span>
+                  <span class="skill-item__level skill-item__level--expert">Uzman</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:92%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">React</span>
+                  <span class="skill-item__level skill-item__level--advanced">İleri</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:82%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Next.js</span>
+                  <span class="skill-item__level skill-item__level--intermediate">Orta</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:65%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">TypeScript</span>
+                  <span class="skill-item__level skill-item__level--intermediate">Orta</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:68%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal reveal--delay-1" id="skills-backend">
+            <h3 class="skill-category__title">
+              <span class="skill-icon">⚙️</span> Backend
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Node.js / Express</span>
+                  <span class="skill-item__level skill-item__level--advanced">İleri</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:80%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">NestJS</span>
+                  <span class="skill-item__level skill-item__level--intermediate">Orta</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:70%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Python / FastAPI</span>
+                  <span class="skill-item__level skill-item__level--intermediate">Orta</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:62%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">PostgreSQL / MongoDB</span>
+                  <span class="skill-item__level skill-item__level--advanced">İleri</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:75%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal reveal--delay-2" id="skills-devops">
+            <h3 class="skill-category__title">
+              <span class="skill-icon">🐳</span> DevOps & Cloud
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Docker / Compose</span>
+                  <span class="skill-item__level skill-item__level--advanced">İleri</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:78%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">GitHub Actions</span>
+                  <span class="skill-item__level skill-item__level--advanced">İleri</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:76%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Linux / Bash</span>
+                  <span class="skill-item__level skill-item__level--intermediate">Orta</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:65%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Fly.io / Cloudflare</span>
+                  <span class="skill-item__level skill-item__level--learning">Öğreniyorum</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:50%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal reveal--delay-3" id="skills-tools">
+            <h3 class="skill-category__title">
+              <span class="skill-icon">🛠️</span> Araçlar & Diğer
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Git / GitHub</span>
+                  <span class="skill-item__level skill-item__level--advanced">İleri</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:85%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Semgrep / Trivy</span>
+                  <span class="skill-item__level skill-item__level--intermediate">Orta</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:60%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Java / Spring</span>
+                  <span class="skill-item__level skill-item__level--intermediate">Orta</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:55%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__info">
+                  <span class="skill-item__name">Figma</span>
+                  <span class="skill-item__level skill-item__level--learning">Öğreniyorum</span>
+                </div>
+                <div class="skill-bar"><div class="skill-bar__fill" style="--w:40%"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 4. DENEYİM ══════════════ -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">04. Deneyim</span>
+          <h2 class="section__title" id="experience-title">İş Deneyimi</h2>
+        </div>
+        <div class="timeline">
+
+          <div class="timeline__item reveal" id="exp-staj">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div class="timeline__card">
+              <div class="timeline__card-header">
+                <div>
+                  <h3 class="timeline__title">Bireysel Geliştirici & Öğrenci</h3>
+                  <p class="timeline__company">Bitlis Eren Üniversitesi</p>
+                </div>
+                <span class="timeline__date">2024 – Devam</span>
+              </div>
+              <ul class="timeline__list">
+                <li>Web teknolojilerini (MERN Stack, HTML/CSS/JS) proje odaklı öğreniyorum.</li>
+                <li>Go ve Node.js ile temel backend servisleri ve API'ler geliştiriyorum.</li>
+                <li>Docker ve temel CI/CD kavramlarını projelerimde test ediyorum.</li>
+              </ul>
+              <div class="timeline__tags">
+                <span class="tag tag--sm">Web Dev</span>
+                <span class="tag tag--sm">Backend</span>
+                <span class="tag tag--sm">Öğrenim</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 5. EĞİTİM ══════════════ -->
+    <section class="section section--alt" id="education" aria-labelledby="education-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">05. Eğitim</span>
+          <h2 class="section__title" id="education-title">Akademik Geçmiş</h2>
+        </div>
+        <div class="education__grid">
+
+          <div class="edu-card reveal" id="edu-beu">
+            <div class="edu-card__icon">🎓</div>
+            <div class="edu-card__content">
+              <h3 class="edu-card__title">Bilgisayar Mühendisliği</h3>
+              <p class="edu-card__institution">Bitlis Eren Üniversitesi · Bitlis</p>
+              <p class="edu-card__dates">2024 – 2028 (Devam)</p>
+              <p class="edu-card__gpa"></p>
+              <div class="edu-card__courses">
+                <h4>İlgili Dersler:</h4>
+                <div class="course-tags">
+                  <span class="tag tag--sm">Veri Yapıları</span>
+                  <span class="tag tag--sm">Algoritmalar</span>
+                  <span class="tag tag--sm">Veritabanı Yönetimi</span>
+                  <span class="tag tag--sm">İşletim Sistemleri</span>
+                  <span class="tag tag--sm">Web Programlama</span>
+                  <span class="tag tag--sm">Yazılım Mühendisliği</span>
+                  <span class="tag tag--sm">Bilgisayar Ağları</span>
+                  <span class="tag tag--sm">Makine Öğrenmesi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="edu-card reveal reveal--delay-1" id="edu-certs">
+            <div class="edu-card__icon">📜</div>
+            <div class="edu-card__content">
+              <h3 class="edu-card__title">Sertifikalar</h3>
+              <p class="edu-card__institution">Çeşitli Platformlar</p>
+              <ul class="cert-list">
+                <li class="cert-item">
+                  <span class="cert-item__name">1 Milyon İstihdam - Python Eğitimi</span>
+                  <span class="cert-item__org">BTK Akademi · 2024</span>
+                </li>
+                <li class="cert-item">
+                  <span class="cert-item__name">Modern Web Geliştirme (HTML/CSS/JS)</span>
+                  <span class="cert-item__org">BTK Akademi · 2024</span>
+                </li>
+                <li class="cert-item">
+                  <span class="cert-item__name">Veri Yapıları ve Algoritmalar</span>
+                  <span class="cert-item__org">Udemy / Topluluk Eğitimi · 2023</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 6. HOBİLER ══════════════ -->
+    <section class="section" id="hobbies" aria-labelledby="hobbies-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">06. Hobiler</span>
+          <h2 class="section__title" id="hobbies-title">Ben Kimim?</h2>
+          <p class="section__subtitle">Kod dışındaki hayatım — çünkü görüşmeciler de insan tarafını görmek istiyor.</p>
+        </div>
+        <div class="hobbies__grid">
+          <div class="hobby-card reveal" id="hobby-1">
+            <div class="hobby-card__emoji">🧗</div>
+            <h3 class="hobby-card__title">Kaya Tırmanışı</h3>
+            <p class="hobby-card__desc">Problem çözme ve ısrar etme becerisini hem kayada hem kodda kullanıyorum. Bouldering: V4 seviyesi.</p>
+          </div>
+          <div class="hobby-card reveal reveal--delay-1" id="hobby-2">
+            <div class="hobby-card__emoji">📚</div>
+            <h3 class="hobby-card__title">Teknik Okuma</h3>
+            <p class="hobby-card__desc">Her ay 1-2 teknik kitap okuyorum. Son: "Designing Data-Intensive Applications" — gerçekten değişti bakış açım.</p>
+          </div>
+          <div class="hobby-card reveal reveal--delay-2" id="hobby-3">
+            <div class="hobby-card__emoji">🎸</div>
+            <h3 class="hobby-card__title">Gitar</h3>
+            <p class="hobby-card__desc">4 yıldır amatör olarak çalıyorum, müzikten hem dinlenme hem yaratıcılık kanalı olarak faydalanıyorum.</p>
+          </div>
+          <div class="hobby-card reveal reveal--delay-3" id="hobby-4">
+            <div class="hobby-card__emoji">🌱</div>
+            <h3 class="hobby-card__title">Açık Kaynak</h3>
+            <p class="hobby-card__desc">Sadece kariyer için değil, gerçekten inanıyorum. Bilginin paylaşılmasının herkesi ilerlettiğini düşünüyorum.</p>
+          </div>
+          <div class="hobby-card reveal reveal--delay-4" id="hobby-5">
+            <div class="hobby-card__emoji">🎮</div>
+            <h3 class="hobby-card__title">Bağımsız Oyunlar</h3>
+            <p class="hobby-card__desc">Indie game geliştirme topluluklarını takip ediyorum. Küçük ekiplerin büyük sesler çıkardığını görünce motive oluyorum.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 7. İLETİŞİM ══════════════ -->
+    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">07. İletişim</span>
+          <h2 class="section__title" id="contact-title">Konuşalım</h2>
+          <p class="section__subtitle">Staj, proje ortaklığı veya sadece selamlaşmak için — yanıt garantili.</p>
+        </div>
+        <div class="contact__layout">
+          <div class="contact__info reveal">
+            <div class="contact__links">
+              <a href="mailto:iremyagm@gmail.com" class="contact__link" id="contact-email">
+                <div class="contact__link-icon">✉️</div>
+                <div>
+                  <div class="contact__link-label">E-posta</div>
+                  <div class="contact__link-value">iremyagm@gmail.com</div>
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/in/iremsu-ya%C4%9Fmur-3b16063a8/" target="_blank" rel="noopener noreferrer" class="contact__link" id="contact-linkedin">
+                <div class="contact__link-icon">💼</div>
+                <div>
+                  <div class="contact__link-label">LinkedIn</div>
+                  <div class="contact__link-value">linkedin.com/in/iremsu-yağmur-3b16063a8</div>
+                </div>
+              </a>
+              <a href="https://github.com/irem-suyagmur" target="_blank" rel="noopener noreferrer" class="contact__link" id="contact-github">
+                <div class="contact__link-icon">🐙</div>
+                <div>
+                  <div class="contact__link-label">GitHub</div>
+                  <div class="contact__link-value">github.com/irem-suyagmur</div>
+                </div>
+              </a>
+            </div>
+            <div class="contact__status">
+              <div class="status-dot status-dot--active" aria-hidden="true"></div>
+              <span>Yarı zamanlı iş ve staj fırsatlarına açık · Bitlis / Uzaktan</span>
+            </div>
+          </div>
+          <form class="contact__form reveal reveal--delay-1" id="contactForm" novalidate aria-label="İletişim formu">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Ad Soyad</label>
+              <input class="form-input" type="text" id="contactName" name="name" placeholder="Ahmet Kaya" required autocomplete="name" />
+              <span class="form-error" id="nameError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">E-posta</label>
+              <input class="form-input" type="email" id="contactEmail" name="email" placeholder="ahmet@sirket.com" required autocomplete="email" />
+              <span class="form-error" id="emailError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactSubject">Konu</label>
+              <input class="form-input" type="text" id="contactSubject" name="subject" placeholder="Staj fırsatı hakkında" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Mesaj</label>
+              <textarea class="form-input form-textarea" id="contactMessage" name="message" placeholder="Merhaba İrem, ..." required rows="5" aria-required="true"></textarea>
+              <span class="form-error" id="messageError" role="alert"></span>
+            </div>
+            <button class="btn btn--primary btn--full" type="submit" id="submitBtn">
+              <span>Mesaj Gönder</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+              ✅ Mesajınız alındı! 24 saat içinde yanıtlayacağım.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo" aria-label="Başa dön">
+          <span class="logo-bracket">&lt;</span>IY<span class="logo-bracket">/&gt;</span>
+        </a>
+        <p class="footer__tagline">Kod yazarım, sorun çözerim.</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://github.com/irem-suyagmur" target="_blank" rel="noopener noreferrer" aria-label="GitHub" id="footer-github">GitHub</a>
+        <a href="https://www.linkedin.com/in/iremsu-ya%C4%9Fmur-3b16063a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="footer-linkedin">LinkedIn</a>
+        <a href="assets/irem-yildiz-cv.pdf" download id="footer-cv">CV PDF</a>
+        <a href="/status" id="footer-status">Uptime</a>
+      </div>
+      <p class="footer__copy">&copy; 2025 İremsu Yağmur. Tüm haklar saklıdır.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Başa dön" title="Başa Dön">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
